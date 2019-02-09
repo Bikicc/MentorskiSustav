@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ parent() }}
+
+</br></br>
+<h3>List of Students:</h3>
+
+<table class="table table-striped">
+  <tbody>
+  {% for student in students %}
+  {% if student.status != 'none' %}
+    <tr>
+      <th scope="row"><a href="{{ path('Student', {user_id: student.email}) }}">{{ student.email }}</a></th>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,256 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="btn btn-outline-danger my-2 my-sm-0" href="{{ path('app_logout')}}">Sign out<span class="sr-only">(current)</span></a>
+            </div>
+    </div>
+</nav>
+</br>
+<div class="float-center">
+<h3>Subjects:</h3>
+<div style="height: 500px; overflow-y: auto">
+  <table class="table table-bordered table-striped">
+    <tbody>
+    <th scope="row">ECTS</th>
+    <th scope="row">Name</th>
+    {% for subject in subjects %}
+        {% if subject not in enrolledSubjects %} 
+            <tr>
+            <th scope="row">{{ subject.ECTS }}</th>
+            <th scope="row">{{ subject.name }}</th>
+            <th scope="row"> <a href="{{ path('enrollSubject', {user_id: student.email,subject_id: subject.code}) }}" class="btn btn-outline-dark">Enroll</a></th>
+            </tr>
+        {% endif %} 
+    {% endfor %}
+    </tbody>
+
+  </table>
+</div>
+</div><br>
+<hr />​​​​​​​​​​​​​​​​​​​
+<div class="float-center">
+<h3>Enrolled subjects ({{ student.email }}):</h3>
+<br>
+<div style="height: 600px; overflow-y: auto">
+<h5>Semester 1:</h5>
+<div>
+  <table class="table table-bordered table-striped">
+    <tbody>
+        {% for enrolled in userSubjects %}
+        {% if student.status == 'redovni' %}
+            {% if enrolled.SubjectCode.semRedovni == 1 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+        {% else %}
+            {% if enrolled.SubjectCode.semIzvanredni == 1 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled >Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<br>
+<h5>Semester 2:</h5>
+<div>
+ <table class="table table-bordered table-striped">
+    <tbody>
+        {% for enrolled in userSubjects %}
+        {% if student.status == 'redovni' %}
+            {% if enrolled.SubjectCode.semRedovni == 2 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+        {% else %}
+            {% if enrolled.SubjectCode.semIzvanredni == 2 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<br>
+<h5>Semester 3:</h5>
+<div>
+ <table class="table table-bordered table-striped">
+    <tbody>
+        {% for enrolled in userSubjects %}
+        {% if student.status == 'redovni' %}
+            {% if enrolled.SubjectCode.semRedovni == 3 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+           <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+        {% else %}
+            {% if enrolled.SubjectCode.semIzvanredni == 3 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<br>
+<h5>Semester 4:</h5>
+<div>
+  <table class="table table-bordered table-striped">
+    <tbody>
+        {% for enrolled in userSubjects %}
+        {% if student.status == 'redovni' %}
+            {% if enrolled.SubjectCode.semRedovni == 4 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+        {% else %}
+            {% if enrolled.SubjectCode.semIzvanredni == 4 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+           <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+           <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<br>
+<h5>Semester 5:</h5>
+<div>
+ <table class="table table-bordered table-striped">
+    <tbody>
+        {% for enrolled in userSubjects %}
+        {% if student.status == 'redovni' %}
+            {% if enrolled.SubjectCode.semRedovni == 5 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+        {% else %}
+            {% if enrolled.SubjectCode.semIzvanredni == 5 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+           <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+           <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<br>
+<h5>Semester 6:</h5>
+<div>
+  <table class="table table-bordered table-striped">
+    <tbody>
+        {% for enrolled in userSubjects %}
+        {% if student.status == 'redovni' %}
+            {% if enrolled.SubjectCode.semRedovni == 6 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+        {% else %}
+            {% if enrolled.SubjectCode.semIzvanredni == 6 %}
+      <tr>
+        <th scope="row">{{ enrolled.SubjectCode.name }}</th>
+        {% if enrolled.status == 'passed' %}
+        <th scope="row"><button type="button" class="btn btn-success" disabled>Passed</button></th>
+        {% else %}
+            <th scope="row"> <a href="{{ path('StudentPassedSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-success">Subject passed</a></th>
+            <th scope="row"> <a href="{{ path('StudentRemoveSubject', {user_id: enrolled.UserEmail.email, subject_id: enrolled.SubjectCode.code}) }}" class="btn btn-outline-danger">Remove subject</a></th>
+        {% endif %}
+      </tr>
+            {% endif %}
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+{% endblock %}

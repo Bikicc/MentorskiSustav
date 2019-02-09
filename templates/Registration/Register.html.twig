@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Create Account</h4>
+	<form name="registration_form" method="post">
+	<!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i>Email </span>
+		 </div>
+      <input  class="form-control" type="email" id="registration_form_email" name="registration_form[email]"  placeholder="Email"   required="required" maxlength="100">
+    </div> 
+     <!-- form-group end.// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i>Password </span>
+		</div>
+    
+      <input  class="form-control" type="password" id="registration_form_plainPassword_first" name="registration_form[plainPassword][first]"  placeholder="Create password"   required="required" >
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i>Confirm password </span>
+		</div>
+      <input  class="form-control" type="password" id="registration_form_plainPassword_second" name="registration_form[plainPassword][second]"  placeholder="Repeat password"   required="required" >
+    </div> <!-- form-group// -->   
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i>Status </span>
+		</div>
+        <select id="registration_form_status" name="registration_form[status]"><option value="redovni">Redovni</option><option value="izvanredni">Izvanredni</option></select> 
+    </div>     
+    {{ form_row(form._token) }}
+    <div style="float: center;"> 
+            <button type="submit" class="btn btn-primary">Register!</button>    
+            <p class="text-center">Have an account? <a href="{{ path('app_login') }}">Log In</a> </p>   
+    </div>               
+
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div> 
+
+{% endblock %}

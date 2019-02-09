@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ parent() }}
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Add new subject</h4>
+	<form name="subject_form" method="post">
+	<!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i>Name </span>
+		 </div>
+      <input type="text" class="form-control" id="subject_form_name" placeholder="Enter subject name" aria-describedby="emailHelp" name="subject_form[name]" required="required" maxlength="50">
+    </div> 
+     <!-- form-group end.// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> Code </span>
+		</div>
+      <input type="text" class="form-control" id="subject_form_code" placeholder="Enter subject code" name="subject_form[code]" required="required" maxlength="10">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> Description </span>
+		</div>
+      <textarea id="subject_form_description" class="form-control" placeholder="Enter subject decription" name="subject_form[description]" required="required"></textarea>
+    </div> <!-- form-group// -->   
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> ECTS </span>
+		</div>
+      <input type="text" class="form-control" id="subject_form_ECTS"  placeholder="Number of ECTS" name="subject_form[ECTS]" required="required">
+    </div>         
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i>Semester redovni</span>
+		</div>
+      <input type="text" class="form-control" id="subject_form_sem_redovni" placeholder="Semester redovni" name="subject_form[sem_redovni]" required="required">
+    </div>         
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i>Semester izvanredni </span>
+		</div>
+      <input type="text" class="form-control" id="subject_form_sem_izvanredni" placeholder="Semester izvanredni" name="subject_form[sem_izvanredni]" required="required">
+    </div>        
+    <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="subject_form_izborni" name="subject_form_izborni">
+    <label class="form-check-label" for="subject_form_izborni">Izborni</label>
+   </div>      
+   <button type="submit" class="btn btn-primary">Add new subject</button>               
+
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div> 
+
+
+{% endblock %} 

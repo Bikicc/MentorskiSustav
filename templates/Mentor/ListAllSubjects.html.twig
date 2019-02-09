@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ parent() }}
+
+<table class="table table-hover">
+<thead>
+    <tr>
+      <th scope="row">Code</th>
+      <th scope="row">Name</th>
+      <th scope="row">ECTS</th>
+      <th scope="row">Description</th>
+      <th scope="row">Semester redovni</th>
+      <th scope="row">Semester izvanredni</th>
+      <th scope="row">Elective course</th>
+      <th scope="row"></th>
+      <th scope="row"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for subject in subjects %}
+    <tr>
+      <th scope="row">{{ subject.code }}</th>
+      <th scope="row">{{ subject.name }}</th>
+      <th scope="row">{{ subject.ECTS }}</th>
+      <th scope="row">{{ subject.description }}</th>
+      <th scope="row">{{ subject.semRedovni }}</th>
+      <th scope="row">{{ subject.semIzvanredni }}</th>
+      {% if subject.izborni == 1 %}
+      <th scope="row">Da</th>
+      {% else %}
+      <th scope="row">Ne</th>
+      {% endif %}
+      <th scope="row"> <a href="{{ path('EditSubject', {subject_id: subject.code}) }}" class="btn btn-outline-secondary btn-sm">Edit</a></th>
+      <th scope="row"> <a href="{{ path('MentorRemoveSubject', {subject_id: subject.code}) }}" class="btn btn-outline-danger">Remove</a></th>
+    
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+{% endblock %}
