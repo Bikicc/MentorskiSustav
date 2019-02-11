@@ -3,26 +3,30 @@
 {% block title %}Home Page{% endblock %}
 
 {% block body %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="btn btn-outline-danger my-2 my-sm-0" href="{{ path('app_logout')}}">Sign out<span class="sr-only">(current)</span></a>
-            </div>
+<nav  class="navbar navbar-expand-lg navbar-light bg-light">
+    <div  class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div  class="navbar-nav">
+            <a  class="btn btn-outline-danger my-2 my-sm-0" href="{{ path('app_logout')}}" >Sign out<span class="sr-only">(current)</span></a>
+        </div>
     </div>
 </nav>
 </br>
 <div class="float-center">
-<h3>Subjects:</h3>
+<h2 align="center"   >Subjects:</h3>
 <div style="height: 500px; overflow-y: auto">
   <table class="table table-bordered table-striped">
     <tbody>
     <th scope="row">ECTS</th>
     <th scope="row">Name</th>
+    <th scope="row">Semester redovni</th>
+    <th scope="row">Semester redovni</th>
     {% for subject in subjects %}
         {% if subject not in enrolledSubjects %} 
             <tr>
             <th scope="row">{{ subject.ECTS }}</th>
             <th scope="row">{{ subject.name }}</th>
+            <th scope="row">{{ subject.semRedovni }}</th>
+            <th scope="row">{{ subject.semIzvanredni }}</th>
             <th scope="row"> <a href="{{ path('enrollSubject', {user_id: student.email,subject_id: subject.code}) }}" class="btn btn-outline-dark">Enroll</a></th>
             </tr>
         {% endif %} 
@@ -34,7 +38,7 @@
 </div><br>
 <hr />​​​​​​​​​​​​​​​​​​​
 <div class="float-center">
-<h3>Enrolled subjects ({{ student.email }}):</h3>
+<h2 align="center">Enrolled subjects ({{ student.email }}):</h3>
 <br>
 <div style="height: 600px; overflow-y: auto">
 <h5>Semester 1:</h5>

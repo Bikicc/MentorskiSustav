@@ -27,9 +27,9 @@
       <th scope="row">{{ subject.semRedovni }}</th>
       <th scope="row">{{ subject.semIzvanredni }}</th>
       {% if subject.izborni == 1 %}
-      <th scope="row">Da</th>
+      <th scope="row">Yes</th>
       {% else %}
-      <th scope="row">Ne</th>
+      <th scope="row">No</th>
       {% endif %}
       <th scope="row"> <a href="{{ path('EditSubject', {subject_id: subject.code}) }}" class="btn btn-outline-secondary btn-sm">Edit</a></th>
       <th scope="row"> <a href="{{ path('MentorRemoveSubject', {subject_id: subject.code}) }}" class="btn btn-outline-danger">Remove</a></th>

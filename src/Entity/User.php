@@ -43,7 +43,10 @@ class User implements UserInterface
   
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
+     * @Assert\Length(
+     * min=6,
+     * max=4096,
+     * minMessage = "Your password must be at least 6 characters long")
      */
     private $plainPassword;
 

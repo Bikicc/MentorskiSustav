@@ -6,7 +6,7 @@
 
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Edit subject {{ subject.name }}</h4>
+	<h3 class="card-title mt-3 text-center">Edit subject {{ subject.name }}</h3>
 	<form name="subject_form" method="post">
 	<!-- form-group// -->
     <div class="form-group input-group">
@@ -27,7 +27,7 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> Description</span>
 		</div>
-      <textarea id="subject_form_description" class="form-control" placeholder="Enter subject decription" value="{{subject.description }}" name="subject_form[description]" required="required"></textarea>
+      <textarea id="subject_form_description" class="form-control" placeholder="{{subject.description }}"  name="subject_form[description]" required="required"></textarea>
     </div> <!-- form-group// -->   
     <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -51,7 +51,7 @@
     <input type="checkbox" class="form-check-input" id="subject_form_izborni" name="subject_form_izborni">
     <label class="form-check-label" for="subject_form_izborni">Izborni</label>
    </div>      
-   <button type="submit" class="btn btn-primary">Add new subject</button>               
+   <button type="submit" class="btn btn-primary">Finish editing</button>               
 
 </form>
 </article>

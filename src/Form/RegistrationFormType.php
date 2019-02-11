@@ -24,6 +24,8 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
+                'error_bubbling' => true,
+                'invalid_message' => 'Passwords are not matching',
             ))
             ->add('status', ChoiceType::class, [
                 'choices' => [

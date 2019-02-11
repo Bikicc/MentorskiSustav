@@ -11,7 +11,6 @@ namespace App\Controller;
 
 class DefaultController extends AbstractController
 {
-  private  $urlGenerator;
 
   	/**
 	*@route("/",name="DefaultController") 
